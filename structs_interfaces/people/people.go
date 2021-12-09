@@ -13,41 +13,40 @@ type Person struct {
 	phone string
 }
 
-//A person method
 func (p Person) SayHello() {
-	fmt.Printf("Hi, I am %s, %d years old\n", p.name, p.age)
+	fmt.Printf("Hi, I am %s and I am %d years old.\n", p.name, p.age)
 }
 
-//A person method
 func (p Person) ToString() {
-	fmt.Printf("[Name: %s, Age: %d, Phone: %s]\n", p.name, p.age, p.phone)
+	fmt.Printf("[Name : %s, Age : %d, Phone : %s]\n", p.name, p.age, p.phone)
 }
 
 type Student struct {
-	Person     //type embedding for composition
+	Person
 	university string
-	course     string
-}
-type Developer struct {
-	Person   //type embedding for composition
-	company  string
-	platform string
+	major      string
 }
 
-//Developer's method overrides Person's SayHello
-func (d Developer) SayHello() {
-	fmt.Printf("Hi, I am %s , %d years old, developer working on %s for %s\n",
-		d.name, d.age, d.platform, d.company)
+func (s Student) SayHello() {
+	fmt.Printf("Hello, I am %s, %d years old. I am a student in %s majoring in %s.\n", s.name, s.age, s.university, s.major)
 }
+
+type Developer struct {
+	Person
+	company           string
+	favorite_language string
+}
+
+func (d Developer) SayHello() {
+	fmt.Printf("Hello, I am %s, %d years old. I am a developer for %s and I like writing code in %s.\n", d.name, d.age, d.company, d.favorite_language)
+}
+
 func main() {
-	alex := Student{Person{"alex", 21, "111-222-XXX"}, "MIT", "BS CS"}
-	john := Developer{Person{"John", 35, "111-222-XXX"}, "Accel North America", "Golang"}
-	jithesh := Developer{Person{"Jithesh", 33, "111-222-XXX"}, "Accel North America", "Hadoop"}
-	//An array with People types
-	peopleArr := [...]People{alex, john, jithesh}
-	//Iterating through the array of People types and call methods.
-	for n, _ := range peopleArr {
-		peopleArr[n].SayHello()
-		peopleArr[n].ToString()
+	alex := Student{Person{"alex", 24, "6934567890"}, "NTUA", "ECE"}
+	john := Developer{Person{"john", 23, "6934567891"}, "Alphabet", "Golang"}
+	PeopleArr := [...]People{alex, john}
+	for n := range PeopleArr {
+		PeopleArr[n].SayHello()
+		PeopleArr[n].ToString()
 	}
 }
