@@ -81,7 +81,7 @@ func (b *BusBuilder) SetWheels() BuildProcess {
 }
 
 func (b *BusBuilder) SetSeats() BuildProcess {
-	b.v.Seats = 31
+	b.v.Seats = 30
 	return b
 }
 
