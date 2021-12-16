@@ -9,8 +9,9 @@ import (
 )
 
 func main() {
-	counts := make(map[string]int)
+	counts := make(map[string]int) //map[KeyType]ValueType
 	input := bufio.NewScanner(os.Stdin)
+
 	for input.Scan() {
 		counts[input.Text()]++
 	}
