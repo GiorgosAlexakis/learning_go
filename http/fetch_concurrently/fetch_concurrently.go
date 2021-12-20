@@ -1,3 +1,5 @@
+// fetches url concurrently with the use of channels
+// todo: do exercises 1.10,1.11 from The Go Programming Language Book
 package main
 
 import (
