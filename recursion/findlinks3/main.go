@@ -1,4 +1,5 @@
-// findlinks1 prints the links in an HTML document read from the standard input.
+// Exercise 5.4: Extend the visit function(findlinks1) so that it extracts other kinds of links from
+// the document, such as images, scripts, and style sheets
 package main
 
 import (
