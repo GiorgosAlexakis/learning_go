@@ -40,8 +40,17 @@ func PopCountShift64(x uint64) (count int) {
 	return count
 }
 
+func PopCountClearRightMostZero(x uint64) (count uint64) {
+	for x != 0 {
+		x = x & (x - 1)
+		count++
+	}
+	return count
+}
+
 func main() {
 	fmt.Println(PopCount(2511112121212))
 	fmt.Println(PopCountLoop(2511112121212))
 	fmt.Println(PopCountShift64(2511112121212))
+	fmt.Println(PopCountClearRightMostZero(2511112121212))
 }
